@@ -1,0 +1,12 @@
+---
+- name: Change parameter value
+  hosts: all
+  become: true
+  tasks:
+    - name: Allow password authentication
+	  ansible.builtin.lineinfile:
+	    state: present
+		dest: /etc/ssh/sshd_config
+		regexp: "^PasswordAuthentication"
+		line: "PasswordAuthentication yes"
+		
