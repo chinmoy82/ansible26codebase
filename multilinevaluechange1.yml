@@ -1,0 +1,16 @@
+---
+- name: Update multiple lines in a config file
+  hosts: all
+  become: yes
+  tasks:
+    - name: Change config setting1
+      ansible.builtin.replace:
+        path: /<config_complete_dir>/config.cfg
+        regexp: '^config_param1=.*'
+        replace: 'config_param1=config_param1_newval1'
+
+    - name: Change config setting2
+      ansible.builtin.replace:
+        path: /<config_complete_dir>/config.cfg
+        regexp: '^config_param2=.*'
+        replace: 'config_param1=config_param1_newval2'
