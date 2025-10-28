@@ -1,11 +1,11 @@
 ---
-- name: Modify multiple lines from same config file
+- name: Modify multiple lines from same config property file
   hosts: all
   become: false
   tasks:
     - name: Make sure multiple parameters are present
       ansible.builtin.lineinfile:
-        path: /<home_dir>/config.properties
+        path: /<config_files_actual_path>/config.properties
         regexp: "^{{ item.key }}="
         line: "{{ item.key }}={{ item.value }}"
       loop:
@@ -14,4 +14,5 @@
         - { key: 'parameter3', value: 'new_value3' }
 		- { key: 'parameter4', value: 'new_value4' }
 		- { key: 'parameter5', value: 'new_value5' }
+
 		
